@@ -1,7 +1,6 @@
-package com.ecommerce.product.application.dto
+package com.ecommerce.product.application.command
 
-data class ProductDto(
-    val id: Long,
+data class ProductCreateCommand(
     val name: String,
     val price: Long,
     val quantity: Long,

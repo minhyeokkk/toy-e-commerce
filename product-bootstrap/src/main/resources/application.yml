@@ -1,1 +1,8 @@
-
+spring:
+  application:
+    name: product
+  config:
+    import:
+      - classpath:product-domain.yml
+      - classpath:product-infra-rdb.yml
+      - classpath:product-application.yml
