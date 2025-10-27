@@ -5,5 +5,6 @@ import com.ecommerce.product.application.dto.ProductDto
 
 interface ProductUseCase {
     fun getAll(): List<ProductDto>
+    fun get(id: Long): ProductDto
     fun create(productCreateCommand: ProductCreateCommand): ProductDto
 }

@@ -7,4 +7,5 @@ interface ProductRepository {
     fun findAll(): List<Product>
 
     fun create(productCreateCommand: ProductCreateCommand): Product
+    fun findById(id: Long): Product
 }

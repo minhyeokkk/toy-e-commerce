@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: order
+  config:
+    import:
+      - classpath:order-domain.yml
+      - classpath:order-infra-rdb.yml
+      - classpath:order-application.yml
+server:
+  port: 8081

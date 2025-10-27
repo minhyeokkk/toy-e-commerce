@@ -6,6 +6,7 @@ import com.ecommerce.product.bootstrap.response.ProductResponse
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -23,6 +24,13 @@ class ProductController(private val productUseCase: ProductUseCase) {
              .toList()
              .also { productsResponse -> return ResponseEntity.ok(productsResponse) }
      }
+
+    @GetMapping("/{id}")
+    fun getProduct(@PathVariable id: Long): ResponseEntity<ProductResponse> {
+        productUseCase.get(id)
+            .let { productDto -> ProductResponse.of(productDto) }
+            .also { productResponse ->  return ResponseEntity.ok(productResponse) }
+    }
 
     @PostMapping
     fun createProduct(@Valid @RequestBody productRequest: ProductRequest): ResponseEntity<ProductResponse> {

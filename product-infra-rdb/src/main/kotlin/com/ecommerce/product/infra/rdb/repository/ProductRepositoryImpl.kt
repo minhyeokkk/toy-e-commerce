@@ -26,6 +26,22 @@ class ProductRepositoryImpl(
         }
     }
 
+    override fun findById(id: Long): Product {
+
+        val entity = productJpaRepository.findById(id).orElseThrow {
+            IllegalArgumentException("Product not found with id: $id")
+        }
+
+        return Product(
+            id = entity.id!!,
+            name = entity.name,
+            description = entity.description,
+            quantity = entity.quantity,
+            price = entity.price
+        )
+
+    }
+
     override fun create(productCreateCommand: ProductCreateCommand): Product {
         val entity = productJpaRepository.save(
             ProductEntity(

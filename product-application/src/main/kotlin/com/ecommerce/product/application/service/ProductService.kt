@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service
 class ProductService(private val productRepository: ProductRepository) : ProductUseCase {
 
     override fun getAll(): List<ProductDto> {
-        // Implementation to fetch all products from the repository
         return productRepository.findAll().map { p ->
             ProductDto(
                 id = p.id,
@@ -21,6 +20,19 @@ class ProductService(private val productRepository: ProductRepository) : Product
                 price = p.price
             )
         }
+    }
+
+    override fun get(id: Long): ProductDto {
+        return productRepository.findById(id).let { p ->
+            ProductDto(
+                id = p.id,
+                name = p.name,
+                description = p.description,
+                quantity = p.quantity,
+                price = p.price
+            )
+        }
+
     }
 
     override fun create(productCreateCommand: ProductCreateCommand): ProductDto {
