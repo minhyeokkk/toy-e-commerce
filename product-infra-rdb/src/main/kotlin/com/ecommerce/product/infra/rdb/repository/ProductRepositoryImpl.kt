@@ -14,7 +14,6 @@ class ProductRepositoryImpl(
 ) : ProductRepository {
 
     override fun findAll(): List<Product> {
-
         return productJpaRepository.findAll().map { entity ->
             Product(
                 id = entity.id!!,
@@ -27,7 +26,6 @@ class ProductRepositoryImpl(
     }
 
     override fun findById(id: Long): Product {
-
         val entity = productJpaRepository.findById(id).orElseThrow {
             IllegalArgumentException("Product not found with id: $id")
         }
@@ -41,6 +39,31 @@ class ProductRepositoryImpl(
         )
 
     }
+
+    override fun findByIdIn(ids: List<Long>): List<Product> {
+        val productEntities = productJpaRepository.findAllById(ids)
+        return productEntities.map { entity ->
+            Product(
+                id = entity.id!!,
+                name = entity.name,
+                description = entity.description,
+                quantity = entity.quantity,
+                price = entity.price
+            )
+        }
+    }
+
+    override fun update(product: Product): Product {
+        val productEntity = productJpaRepository.findById(product.id).orElseThrow {
+            IllegalArgumentException("Product not found with id: ${product.id}")
+        }
+
+        productEntity.update(product)
+        productJpaRepository.save(productEntity)
+
+        return product
+    }
+
 
     override fun create(productCreateCommand: ProductCreateCommand): Product {
         val entity = productJpaRepository.save(

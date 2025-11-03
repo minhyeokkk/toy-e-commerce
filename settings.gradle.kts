@@ -9,6 +9,7 @@ include (
     "product-domain",
     "product-application",
     "product-infra-rdb",
+    "product-client",
     "order-bootstrap",
     "order-domain",
     "order-application",

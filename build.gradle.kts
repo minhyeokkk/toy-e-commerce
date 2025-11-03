@@ -40,6 +40,9 @@ subprojects {
     }
 
     dependencies {
+        implementation(platform("org.springframework.boot:spring-boot-dependencies:3.3.0"))
+        implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2023.0.3"))
+
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
 

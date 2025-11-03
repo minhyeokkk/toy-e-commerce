@@ -2,12 +2,13 @@ package com.ecommerce.product.bootstrap.request
 
 import com.ecommerce.product.application.command.ProductCreateCommand
 import jakarta.validation.constraints.NotNull
+import java.math.BigDecimal
 
 data class ProductRequest(
     @field:NotNull
     val name: String,
     @field:NotNull
-    val price: Long,
+    val price: BigDecimal,
     @field:NotNull
     val quantity: Long,
     @field:NotNull

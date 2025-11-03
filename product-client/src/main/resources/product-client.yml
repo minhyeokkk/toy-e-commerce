@@ -1,0 +1,4 @@
+feign:
+  client:
+    product-service:
+      url: ${PRODUCT_SERVICE_URL:http://localhost:8080}

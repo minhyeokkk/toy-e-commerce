@@ -1,12 +1,12 @@
 package com.ecommerce.product.bootstrap.response
 
 import com.ecommerce.product.application.dto.ProductDto
-import com.ecommerce.product.domain.Product
+import java.math.BigDecimal
 
 data class ProductResponse(
     val id: Long,
     val name: String,
-    val price: Long,
+    val price: BigDecimal,
     val quantity: Long,
     val description: String
 ) {

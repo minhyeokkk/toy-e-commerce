@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @ComponentScan(basePackages = ["com.ecommerce.order.infra.rdb"])
 @EnableJpaRepositories(basePackages = ["com.ecommerce.order.infra.rdb.repository.jpa"])
 @EntityScan(basePackages = ["com.ecommerce.order.infra.rdb.entity"])
-@EnableJpaAuditing
 class RdbConfig {
 
 }

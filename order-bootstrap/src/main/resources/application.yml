@@ -6,5 +6,6 @@ spring:
       - classpath:order-domain.yml
       - classpath:order-infra-rdb.yml
       - classpath:order-application.yml
+      - classpath:product-client.yml
 server:
   port: 8081
